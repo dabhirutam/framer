@@ -17,7 +17,8 @@ const Profile = async (req, res) => {
 // // Only Admin can access Student
 const ViewStudent = async (req, res) => {
     try {
-        res.status(200).json({ status: true, students: await authModel.find({ role: "student" }).populate('teacherID') });
+        //res.status(200).json({ status: true, students: await authModel.find({ role: "student" }).populate('teacherID') });
+        res.send(await authModel.find({ role: "student" }));
     } catch (error) { return res.status(500).json({ status: false, msg: "Server error." }) };
 }
 
